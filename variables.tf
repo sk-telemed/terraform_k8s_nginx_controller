@@ -35,6 +35,25 @@ locals {
       value = var.service_nodePort_https
     }
   ] : []
+
+  node_selector_enabled = var.node_selector_enabled ? [
+    {
+      name = "nodeSelector"
+      value = var.node_selector_label
+    }
+  ] : []
+}
+
+variable "node_selector_enabled" {
+  description = "Enable NodeSelector or assign automatically"
+  type = string
+  default = false
+}
+
+variable "node_selector_label" {
+  description = "nodeSelector label"
+  type = string
+  default = null
 }
 
 variable "define_nodePorts" {
