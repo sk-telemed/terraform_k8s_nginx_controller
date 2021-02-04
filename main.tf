@@ -22,6 +22,14 @@ resource "helm_release" "application" {
   }
 
   dynamic "set" {
+    for_each = local.node_selector_enabled
+    content {
+      name = set.value.name
+      value = set.value.value
+    }
+  }
+
+  dynamic "set" {
     for_each = local.controller_service_nodePorts
     content {
       name = set.value.name
