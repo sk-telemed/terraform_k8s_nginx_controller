@@ -27,9 +27,9 @@ resource "helm_release" "application" {
   }
 
   dynamic "set" {
-    for_each = local.node_selector_enabled
+    for_each = var.node_selector_enabled
     content {
-      name = set.value.name
+      name  = "controller.nodeSelector.${set.value.key}"
       value = set.value.value
     }
   }
