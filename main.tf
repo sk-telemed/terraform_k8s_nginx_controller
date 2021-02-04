@@ -9,7 +9,7 @@ resource "helm_release" "application" {
   values = [var.disable_heavyweight_metrics ? file("${path.module}/templates/metrics-disable.yaml") : ""]
 
   set {
-    name = "replicaCount"
+    name = "controller.replicaCount"
     value = var.replica_count
   }
 
