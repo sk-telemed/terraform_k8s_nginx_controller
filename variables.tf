@@ -44,6 +44,12 @@ locals {
   ] : []
 }
 
+variable "replica_count" {
+  description = "number of replica"
+  type = string
+  default = 1
+}
+
 variable "node_selector_enabled" {
   description = "Enable NodeSelector or assign automatically"
   type = string
