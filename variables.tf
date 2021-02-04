@@ -38,26 +38,32 @@ locals {
 
   node_selector_enabled = var.node_selector_enabled ? [
     {
-      name = "nodeSelector"
-      value = var.node_selector_label
+      key = var.node_selector_key
+      value = var.node_selector_value
     }
   ] : []
 }
 
 variable "replica_count" {
   description = "number of replica"
-  type = string
+  type = number
   default = 1
 }
 
 variable "node_selector_enabled" {
   description = "Enable NodeSelector or assign automatically"
-  type = string
+  type = bool
   default = false
 }
 
-variable "node_selector_label" {
-  description = "nodeSelector label"
+variable "node_selector_key" {
+  description = "nodeSelector key"
+  type = string
+  default = null
+}
+
+variable "node_selector_value" {
+  description = "nodeSelector value"
   type = string
   default = null
 }
